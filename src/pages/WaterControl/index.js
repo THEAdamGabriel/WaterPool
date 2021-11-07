@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './style.scss';
+import WaterPool from '../../components/WaterPool';
+import * as styles from './style.module.scss';
 
 export default function WaterControl() {
   const [waterLevel, setWaterLevel] = useState(0);
@@ -36,23 +37,8 @@ export default function WaterControl() {
 
   return (
     <div>
-      <h1>Adam Gabriel</h1>
-      <div className="waterPool">
-        <div>
-          <span>Status:&nbsp;</span>
-          <span id="title">Ready</span>
-        </div>
-        <div>{`Level: ${waterLevel}`}</div>
-        <div id="water" />
-      </div>
-      <div className="buttonWrapper">
-        <button id="btnInc" onClick={() => startControlWater('increase', 0)}>
-          increaseWaterLevel
-        </button>
-        <button id="btnDec" onClick={() => startControlWater('decrease', 5)}>
-          decreaseWaterLevel
-        </button>
-      </div>
+      <div className={styles.title}>Adam Gabriel</div>
+      <WaterPool level={waterLevel} startControlWater={startControlWater} />
     </div>
   );
 }
