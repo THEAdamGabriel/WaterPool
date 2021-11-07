@@ -1,0 +1,52 @@
+h1 {
+  text-align: center;
+}
+
+.waterPool {
+  position: relative;
+  width: 500px;
+  height: 200px;
+  border: 3px solid rgb(50, 50, 200);
+  border-radius: 10px;
+  color: rgb(50, 50, 200);
+  font-size: 30px;
+
+  #water {
+    position: absolute;
+    left: -1px;
+    bottom: 0;
+    width: 501px;
+    background-color: rgb(50, 50, 200);
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+
+  button {
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    background-color: rgb(50, 50, 200);
+    border: 1px solid rgb(50, 50, 220);
+    border-radius: 5px;
+    color: white;
+
+    &:hover {
+      background-color: rgb(70, 70, 200);
+    }
+
+    &:active {
+      background-color: rgb(60, 60, 200);
+    }
+
+    &:disabled {
+      border: none;
+      background-color: rgb(200, 200, 200);
+      cursor: auto;
+    }
+  }
+}
