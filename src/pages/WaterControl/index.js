@@ -6,15 +6,25 @@ export default function WaterControl() {
   const [waterLevel, setWaterLevel] = useState(0);
   let timer;
   const startControlWater = (type, level) => {
+    console.log(waterLevel);
     document.getElementById('btnInc').disabled = true;
     document.getElementById('btnDec').disabled = true;
-    setWaterLevel(level);
-    if (level < 5 && type == 'increase') {
+    if (
+      document.getElementById('title').innerText != 'Full' &&
+      level <= 5 &&
+      type == 'increase'
+    ) {
+      setWaterLevel(level);
       document.getElementById('title').innerText = 'Increasing...';
       timer = setTimeout(() => {
         startControlWater('increase', level + 1);
       }, 1000);
-    } else if (level > 0 && type == 'decrease') {
+    } else if (
+      document.getElementById('title').innerText != 'Empty' &&
+      level >= 0 &&
+      type == 'decrease'
+    ) {
+      setWaterLevel(level);
       document.getElementById('title').innerText = 'Decreasing...';
       timer = setTimeout(() => {
         startControlWater('decrease', level - 1);
@@ -22,9 +32,9 @@ export default function WaterControl() {
     } else {
       document.getElementById('btnInc').disabled = false;
       document.getElementById('btnDec').disabled = false;
-      if (level == 5) {
+      if (level >= 5 && document.getElementById('title').innerText != 'Empty') {
         document.getElementById('title').innerText = 'Full';
-      } else {
+      } else if (document.getElementById('title').innerText != 'Full') {
         document.getElementById('title').innerText = 'Empty';
       }
       clearTimeout(timer);
